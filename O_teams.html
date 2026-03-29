@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Owlo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --owlo-green: #75b9b0;
+            --owlo-dark: #0d2a3a;
+            --owlo-card: #081a24;
+            --owlo-black: #000000;
+            --owlo-border: #1e3a4a;
+            --text-gray: rgba(255, 255, 255, 0.6);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--owlo-dark);
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Header identique */
+        header {
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--owlo-border);
+            background: rgba(13, 42, 58, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-size: 24px; font-weight: 800; color: white; text-decoration: none; }
+        .logo span { color: var(--owlo-green); }
+
+        nav a { color: white; text-decoration: none; margin-left: 30px; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: var(--owlo-green); }
+
+        .cta-button {
+            background-color: var(--owlo-green);
+            color: var(--owlo-dark);
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* Styles Spécifiques Team */
+        .container { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+        
+        .section-label {
+            color: var(--owlo-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 60px; letter-spacing: -1px; }
+
+        .team-category { margin-bottom: 80px; }
+        .category-title {
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--owlo-border);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            color: var(--owlo-green);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .member-card {
+            background: var(--owlo-black);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--owlo-green);
+        }
+
+        .member-photo {
+            width: 80px;
+            height: 80px;
+            background: var(--owlo-card);
+            border-radius: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .member-card h3 { margin: 0; font-size: 1.2rem; }
+        .member-card p { color: var(--owlo-green); font-size: 0.9rem; font-weight: 600; margin: 5px 0 15px; }
+        .member-bio { color: var(--text-gray) !important; font-size: 0.85rem !important; font-weight: 400 !important; }
+
+        /* Footer simplifié pour la page team */
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--owlo-border); color: var(--text-gray); font-size: 0.8rem; }
+        
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Recadre l'image proprement pour remplir le carré */
+            border-radius: 20px; /* Garde les bords arrondis du design */
+        }
+    
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="O_main.html" class="logo">OWLO<span>.</span></a>
+        <nav>
+            <a href="O_technologie.html">Technology</a>
+            <a href="O_applications.html">Applications</a>
+            <a href="O_team.html" style="color: var(--owlo-green);">Team</a>
+            <a href="contact.html" class="cta-button">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <section class="team-category">
+            <h2 class="category-title">Founders</h2>
+            <div class="grid">
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="paul.jpg" alt="Paul Balondrade">
+                    </div>
+                    <h3>Paul Balondrade</h3>
+                    <p>CEO</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="victor.png" alt="Victor Barolle">
+                    </div>
+                    <h3>Victor Barollle</h3>
+                    <p>CSO</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="nicolas.jpg" alt="Nicolas Guigui">
+                    </div>
+                    <h3>Nicolas Guigui</h3>
+                    <p>CTO</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="Alexandre-Aubry.jpg" alt="Alexandre Aubry">
+                    </div>
+                    <h3>Alexandre Aubry</h3>
+                    <p>Scentific advisor</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-category">
+            <h2 class="category-title">Team</h2>
+            <div class="grid">
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="flavien.jpg" alt="Flavien Bureau">
+                    </div>
+                    <h3>Flavien Bureau</h3>
+                    <p>R&D engineer</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="elsa.jpg" alt="Elsa Giraudat">
+                    </div>
+                    <h3>Elsa Giraudat</h3>
+                    <p>R&D engineer</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="pol.jpg" alt="Pol d'Avezac">
+                    </div>
+                    <h3>Pol d'Avezac</h3>
+                    <p>Lead software</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="christine.png" alt="Christine Ho">
+                    </div>
+                    <h3>Christine Ho</h3>
+                    <p>Lead bologist</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="gaelle.jpg" alt="Gaëlle Salaün">
+                    </div>
+                    <h3>Gaëlle Salaün</h3>
+                    <p>Quality manager</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="julien.jpg" alt="Julien Thierry">
+                    </div>
+                    <h3>Julien</h3>
+                    <p>Software developer</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-category">
+            <h2 class="category-title">Advisors</h2>
+            <div class="grid">
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="mathias.jpg" alt="Mathias Fink">
+                    </div>
+                    <h3>Prof. Mathias Fink</h3>
+                    <p>Physicist and member of the academy of sciences</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="fabrice-romano.png" alt="Fabrice Romano">
+                    </div>
+                    <h3>Fabrice Romano </h3>
+                    <p>Medtech expert</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-category">
+            <h2 class="category-title">Investors</h2>
+            <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                    <div style="font-weight: 800; color: white; letter-spacing: 1px;">Daphni<br><small style="font-size: 0.6rem; opacity: 0.7;">along with Cercle de Chiron (deal club)</small></div>
+                </div>
+                <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                    <div style="font-weight: 800; color: white; letter-spacing: 1px;">iXCore<br><small style="font-size: 0.6rem; opacity: 0.7;">owned by Hervé Arditty (founder of iXblue)</small></div>
+                </div>
+                <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                    <div style="font-weight: 800; color: white; letter-spacing: 1px; text-align: center;">FI8C<br><small style="font-size: 0.6rem; opacity: 0.7;">Thibaut Courtheoux</small></div>
+                </div>
+                <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                    <div style="font-weight: 800; color: white; letter-spacing: 1px; text-align: center;">Alain Decombe<br><small style="font-size: 0.6rem; opacity: 0.7;">Business Angel</small></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        © 2026 Owlo — Paris, France
+    </footer>
+
+</body>
+</html>

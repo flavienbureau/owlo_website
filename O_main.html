@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owlo - Deep Tech Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --owlo-green: #75b9b0;
+            --owlo-dark: #0d2a3a;
+            --owlo-card: #081a24;
+            --owlo-border: #30363d;
+            --text-white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--owlo-dark);
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--owlo-border);
+            background: rgba(11, 14, 20, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--owlo-green); }
+
+        nav a {
+            color: var(--text-white);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--owlo-green);
+        }
+
+        .hero {
+            padding: 100px 5% 60px;
+            text-align: center;
+            background: radial-gradient(circle at 50% -20%, rgba(0, 255, 170, 0.15), transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        /* ICI : On cible le paragraphe du hero pour le mettre en vert */
+        .hero p {
+            color: var(--owlo-green);
+            font-weight: 600;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 40px 5% 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--owlo-card);
+            border: 1px solid var(--owlo-border);
+            padding: 40px;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .card:hover {
+            border-color: var(--owlo-green); /* Corrigé : vert au lieu d'orange */
+            transform: translateY(-10px);
+            background: #1c2129;
+            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.1);
+        }
+
+        .card-icon {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--owlo-green); /* Corrigé : vert au lieu d'orange */
+            background: rgba(0, 255, 170, 0.1);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 255, 170, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .card p {
+            color: var(--text-white);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            background-color: var(--owlo-green);
+            color: var(--owlo-dark);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Section News */
+        .news-section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            color: var(--owlo-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section-label::before {
+            content: "";
+            width: 20px;
+            height: 2px;
+            background: var(--owlo-green);
+        }
+
+        .news-title {
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+
+        .news-title em {
+            font-family: 'Playfair Display', serif; /* Ou une police serif par défaut */
+            font-style: italic;
+            color: var(--owlo-green);
+            font-weight: 400;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background: var(--owlo-card);
+            border: 1px solid var(--owlo-border);
+            padding: 40px;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--owlo-green);
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: var(--owlo-green);
+        }
+
+        .news-meta .date {
+            color: var(--text-white);
+        }
+
+        .news-card h4 {
+            font-size: 1.4rem;
+            line-height: 1.3;
+            margin-bottom: 25px;
+            color: white;
+            font-weight: 600;
+            text-transform: none; /* Force les lettres normales (minuscules/majuscules respectées) */
+            letter-spacing: normal; /* Réinitialise l'espacement des lettres si nécessaire */
+        }
+
+        .read-more {
+            color: var(--owlo-green);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+    
+        /* Section Roadmap */
+        .roadmap-section {
+            padding: 0px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .roadmap-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            margin-top: 80px;
+            padding: 0 40px;
+        }
+
+        /* La ligne horizontale */
+        .roadmap-container::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--owlo-green), transparent);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .roadmap-item {
+            position: relative;
+            z-index: 2;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .roadmap-dot {
+            width: 60px;
+            height: 60px;
+            background: var(--owlo-black);
+            border: 2px solid var(--owlo-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(117, 185, 176, 0.2);
+            transition: 0.3s;
+        }
+
+        .roadmap-item:hover .roadmap-dot {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(117, 185, 176, 0.5);
+            background: var(--owlo-green);
+        }
+
+        .roadmap-item:hover .roadmap-dot span {
+            color: var(--owlo-dark);
+        }
+
+        .roadmap-dot span {
+            color: var(--owlo-green);
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .roadmap-content h3 {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .roadmap-content p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        /* Responsive : passage en vertical sur mobile */
+        @media (max-width: 768px) {
+            .roadmap-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+            }
+            .roadmap-container::before {
+                width: 2px;
+                height: 80%;
+                left: 50%;
+                top: 0;
+                transform: translateX(-50%);
+            }
+            .roadmap-item { width: 100%; }
+        }
+
+        /* Cette classe applique la couleur verte Owlo */
+        .text-highlight {
+            color: var(--owlo-green);
+            font-weight: 600; /* Optionnel : pour le rendre un peu plus gras */
+        }
+
+        /* Section Footer */
+        footer {
+            padding: 80px 5% 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid var(--owlo-border); /* Ligne de séparation */
+            background-color: var(--owlo-dark);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr; /* 1ère colonne plus large pour le logo */
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span { color: var(--owlo-green); }
+
+        .footer-description {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            max-width: 320px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col-title {
+            color: rgba(255,255,255,0.5); /* Titres des colonnes plus clairs */
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--owlo-green);
+        }
+
+        /* Liens Linkedin et Contact spécifiques (en vert) */
+        .footer-links a.green-link {
+            color: var(--owlo-green);
+            font-weight: 600;
+        }
+
+        /* Sous-footer (Copyright) */
+        .sub-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05); /* Ligne subtile */
+        }
+
+        /* Responsive : colonnes qui s'empilent sur mobile */
+        @media (max-width: 768px) {
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .sub-footer { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="O_main.html" class="logo">OWLO<span>.</span></a>
+        <nav>
+            <a href="O_technologie.html">Technology</a>
+            <a href="O_applications.html">Applications</a>
+            <a href="O_teams.html">Teams</a>
+            <a href="contact.html" class="cta-button" style="padding: 10px 20px; margin-left: 20px;">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Imaging the invisible.</h1>
+        <p>Next generation of non-invasive microscopy for healthcare</p>
+    </section>
+
+    <section class="features">
+        <div class="card">
+            <h3><span class="text-highlight">Label-free</span></h3>
+            <p>Non-invasive / No fluorescence</p>
+        </div>
+        <div class="card">
+            <h3><span class="text-highlight">Fast acquisition</span></h3>
+            <p>About a second</p>
+        </div>
+        <div class="card">
+            <h3><span class="text-highlight">Deep 3D</span></h3>
+            <p>Unprecedented depths</p>
+        </div>
+    </section>
+
+
+    <section class="roadmap-section">
+        <h2 class="news-title">Our story</h2>
+        
+        <div class="roadmap-container">
+            <div class="roadmap-item">
+                <div class="roadmap-dot">
+                    <span>2016</span>
+                </div>
+                <div class="roadmap-content">
+                    <h3>Origin of the technology</h3>
+                    <p>Institut Langevin</p>
+                </div>
+            </div>
+
+            <div class="roadmap-item">
+                <div class="roadmap-dot" style="border-width: 3px;">
+                    <span>2025</span>
+                </div>
+                <div class="roadmap-content">
+                    <h3>Creation of the company</h3>
+                    <p>OWLO SAS</p>
+                </div>
+            </div>
+
+            <div class="roadmap-item">
+                <div class="roadmap-dot">
+                    <span>2026</span>
+                </div>
+                <div class="roadmap-content">
+                    <h3>First product launch</h3>
+                    <p>IVF</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <h2 class="news-title">Latest news</h2>
+
+        <div class="news-grid">
+            <a href="#" class="news-card">
+                <div class="news-meta">
+                    <span>Arxiv · Pre-submission</span>
+                    <span class="date">14.10.2024</span>
+                </div>
+                <p>Optical matrix imaging applied to embryology — breakthrough in non-invasive assessment.</p>
+                <div class="read-more">Read article →</div>
+            </a>
+
+            <a href="#" class="news-card">
+                <div class="news-meta">
+                    <span>France Culture</span>
+                    <span class="date">04.09.2024</span>
+                </div>
+                <p>The matrix microscope: a new tool for probing biological tissues in depth.</p>
+                <div class="read-more">Listen (FR) →</div>
+            </a>
+
+            <a href="#" class="news-card">
+                <div class="news-meta">
+                    <span>Nature Communications</span>
+                    <span class="date">27.08.2024</span>
+                </div>
+                <p>Harnessing forward multiple scattering for optical imaging deep inside an opaque medium.</p>
+                <div class="read-more">Read article →</div>
+            </a>
+
+            <a href="https://www.nature.com/articles/s41566-024-01479-y" class="news-card" target="_blank">
+                <div class="news-meta">
+                    <span>Nature Photonics</span>
+                    <span class="date">16.08.2024</span>
+                </div>
+                <p>Multi-spectral reflection matrix for ultrafast 3D label-free microscopy.</p>
+                <div class="read-more">Read article →</div>
+            </a>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <a href="O_main.html" class="footer-logo">owlo<span>.</span></a>
+                <p class="footer-description">
+                    Next-generation non-invasive microscopy for healthcare. Paris, France.
+                </p>
+                <ul class="footer-links">
+                    <li><a href="#" class="green-link">LINKEDIN →</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <div class="footer-col-title">COMPANY</div>
+                <ul class="footer-links">
+                    <li><a href="O_technologie.html">Technology</a></li>
+                    <li><a href="O_applications.html">Applications</a></li>
+                    <li><a href="#">Team</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <div class="footer-col-title">LEGAL</div>
+                <ul class="footer-links">
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <div class="footer-col-title">CONTACT</div>
+                <ul class="footer-links">
+                    <li><a href="mailto:contact@owlo.io" class="green-link">contact@owlo.io</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sub-footer">
+            <div class="copyright">© 2026 Owlo — Paris, France</div>
+            <div class="credits">Designed by Flavien Bureau</div>
+        </div>
+    </footer>
+    
+
+</body>
+</html>
