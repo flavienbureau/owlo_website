@@ -12,8 +12,11 @@
             --owlo-card: #081a24;
             --owlo-black: #000000;
             --owlo-border: #1e3a4a;
-            --text-gray: rgba(255, 255, 255, 0.6);
+            --text-white: #ffffff;
+            background: rgba(11, 14, 20, 0.8);
         }
+
+        
 
         body {
             margin: 0;
@@ -31,18 +34,54 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--owlo-border);
-            background: rgba(13, 42, 58, 0.8);
+            background: rgba(11, 14, 20, 0.8);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .logo { font-size: 24px; font-weight: 800; color: white; text-decoration: none; }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
         .logo span { color: var(--owlo-green); }
 
-        nav a { color: white; text-decoration: none; margin-left: 30px; font-weight: 500; transition: 0.3s; }
-        nav a:hover { color: var(--owlo-green); }
+        nav a {
+            color: var(--text-white);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--owlo-green);
+        }
+
+        .hero {
+            padding: 100px 5% 60px;
+            text-align: center;
+            background: radial-gradient(circle at 50% -20%, rgba(0, 255, 170, 0.15), transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        /* ICI : On cible le paragraphe du hero pour le mettre en vert */
+        .hero p {
+            color: var(--owlo-green);
+            font-weight: 600;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
 
         .cta-button {
             background-color: var(--owlo-green);
@@ -110,10 +149,10 @@
 
         .member-card h3 { margin: 0; font-size: 1.2rem; }
         .member-card p { color: var(--owlo-green); font-size: 0.9rem; font-weight: 600; margin: 5px 0 15px; }
-        .member-bio { color: var(--text-gray) !important; font-size: 0.85rem !important; font-weight: 400 !important; }
+        .member-bio { color: var(--text-white) !important; font-size: 0.85rem !important; font-weight: 400 !important; }
 
         /* Footer simplifié pour la page team */
-        footer { text-align: center; padding: 60px; border-top: 1px solid var(--owlo-border); color: var(--text-gray); font-size: 0.8rem; }
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--owlo-border); color: var(--text-white); font-size: 0.8rem; }
         
         .member-photo img {
             width: 100%;
@@ -189,61 +228,75 @@
         <section class="team-category">
             <h2 class="category-title">Team</h2>
             <div class="grid">
-                <div class="member-card">
-                    <div class="member-photo">
-                        <img src="flavien.jpg" alt="Flavien Bureau">
+                <a href="https://www.linkedin.com/in/flavien-bureau-1301a0130/" target="_blank" class="member-link">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="flavien.jpg" alt="Flavien Bureau">
+                        </div>
+                        <h3>Flavien Bureau</h3>
+                        <p>R&D engineer</p>
                     </div>
-                    <h3>Flavien Bureau</h3>
-                    <p>R&D engineer</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo">
-                        <img src="elsa.jpg" alt="Elsa Giraudat">
+                </a>
+                <a href="https://www.linkedin.com/in/elsa-giraudat-9b9420153/" target="_blank" class="member-link">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="elsa.jpg" alt="Elsa Giraudat">
+                        </div>
+                        <h3>Elsa Giraudat</h3>
+                        <p>R&D engineer</p>
                     </div>
-                    <h3>Elsa Giraudat</h3>
-                    <p>R&D engineer</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo">
-                        <img src="pol.jpg" alt="Pol d'Avezac">
+                </a>
+                <a href="https://www.linkedin.com/in/pol-d-avezac-6b93a013/" target="_blank" class="member-link">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="pol.jpg" alt="Pol d'Avezac">
+                        </div>
+                        <h3>Pol d'Avezac</h3>
+                        <p>Lead software</p>
                     </div>
-                    <h3>Pol d'Avezac</h3>
-                    <p>Lead software</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo">
-                        <img src="christine.png" alt="Christine Ho">
+                </a>
+                <a href="https://www.linkedin.com/in/christine-ho-ph-d-514207325/" target="_blank" class="member-link">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="christine.png" alt="Christine Ho">
+                        </div>
+                        <h3>Christine Ho</h3>
+                        <p>Lead biologist</p>
                     </div>
-                    <h3>Christine Ho</h3>
-                    <p>Lead bologist</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo">
-                        <img src="gaelle.jpg" alt="Gaëlle Salaün">
+                </a>
+                <a href="https://www.linkedin.com/in/ga%C3%ABlle-sala%C3%BCn-35a4b321/" target="_blank" class="member-link">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="gaelle.jpg" alt="Gaëlle Salaün">
+                        </div>
+                        <h3>Gaëlle Salaün</h3>
+                        <p>Quality manager</p>
                     </div>
-                    <h3>Gaëlle Salaün</h3>
-                    <p>Quality manager</p>
-                </div>
-                <div class="member-card">
-                    <div class="member-photo">
-                        <img src="julien.jpg" alt="Julien Thierry">
+                </a>
+                <a href="https://www.linkedin.com/in/julien-thierry-8a277889/" target="_blank" class="member-link">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="julien.jpg" alt="Julien Thierry">
+                        </div>
+                        <h3>Julien</h3>
+                        <p>Software developer</p>
                     </div>
-                    <h3>Julien</h3>
-                    <p>Software developer</p>
-                </div>
+                </a>
             </div>
         </section>
 
         <section class="team-category">
             <h2 class="category-title">Advisors</h2>
             <div class="grid">
-                <div class="member-card">
-                    <div class="member-photo">
-                        <img src="mathias.jpg" alt="Mathias Fink">
+                <a href="https://fr.wikipedia.org/wiki/Mathias_Fink/" target="_blank" class="member-link">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="mathias.jpg" alt="Mathias Fink">
+                        </div>
+                        <h3>Prof. Mathias Fink</h3>
+                        <p>Physicist and member of the academy of sciences</p>
                     </div>
-                    <h3>Prof. Mathias Fink</h3>
-                    <p>Physicist and member of the academy of sciences</p>
-                </div>
+                </a>
                 <div class="member-card">
                     <div class="member-photo">
                         <img src="fabrice-romano.png" alt="Fabrice Romano">
@@ -257,18 +310,56 @@
         <section class="team-category">
             <h2 class="category-title">Investors</h2>
             <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
-                    <div style="font-weight: 800; color: white; letter-spacing: 1px;">Daphni<br><small style="font-size: 0.6rem; opacity: 0.7;">along with Cercle de Chiron (deal club)</small></div>
-                </div>
-                <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
-                    <div style="font-weight: 800; color: white; letter-spacing: 1px;">iXCore<br><small style="font-size: 0.6rem; opacity: 0.7;">owned by Hervé Arditty (founder of iXblue)</small></div>
-                </div>
+
+                <a href="https://daphni.com" target="_blank" class="member-link">
+                    <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                        <div style="font-weight: 800; color: white; letter-spacing: 1px;">Daphni<br><small style="font-size: 0.6rem; opacity: 0.7;">along with Cercle de Chiron (deal club)</small></div>
+                    </div>
+                </a>
+
+                <a href="https://ixcore.com" target="_blank" class="member-link">
+                    <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                        <div style="font-weight: 800; color: white; letter-spacing: 1px;">iXCore<br><small style="font-size: 0.6rem; opacity: 0.7;">owned by Hervé Arditty (founder of iXblue)</small></div>
+                    </div>
+                </a>
+
                 <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
                     <div style="font-weight: 800; color: white; letter-spacing: 1px; text-align: center;">FI8C<br><small style="font-size: 0.6rem; opacity: 0.7;">Thibaut Courtheoux</small></div>
                 </div>
+
+                <a href="https://www.dechert.com/people/d/alain-decombe.html" target="_blank" class="member-link">
+                    <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                        <div style="font-weight: 800; color: white; letter-spacing: 1px; text-align: center;">Alain Decombe<br><small style="font-size: 0.6rem; opacity: 0.7;">Business Angel</small></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="team-category">
+            <h2 class="category-title">Collaborators</h2>
+            <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+
+                <a href="https://daphni.com" target="_blank" class="member-link">
+                    <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                        <div style="font-weight: 800; color: white; letter-spacing: 1px;">CSF<br><small style="font-size: 0.6rem; opacity: 0.7;">along with Cercle de Chiron (deal club)</small></div>
+                    </div>
+                </a>
+
+                <a href="https://ixcore.com" target="_blank" class="member-link">
+                    <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                        <div style="font-weight: 800; color: white; letter-spacing: 1px;">BPI<br><small style="font-size: 0.6rem; opacity: 0.7;">owned by Hervé Arditty (founder of iXblue)</small></div>
+                    </div>
+                </a>
+
                 <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
-                    <div style="font-weight: 800; color: white; letter-spacing: 1px; text-align: center;">Alain Decombe<br><small style="font-size: 0.6rem; opacity: 0.7;">Business Angel</small></div>
+                    <div style="font-weight: 800; color: white; letter-spacing: 1px; text-align: center;">Institut langevin<br><small style="font-size: 0.6rem; opacity: 0.7;">Thibaut Courtheoux</small></div>
                 </div>
+
+                <a href="https://www.dechert.com/people/d/alain-decombe.html" target="_blank" class="member-link">
+                    <div class="member-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 140px;">
+                        <div style="font-weight: 800; color: white; letter-spacing: 1px; text-align: center;">IMM<br><small style="font-size: 0.6rem; opacity: 0.7;">Business Angel</small></div>
+                    </div>
+                </a>
             </div>
         </section>
     </div>
