@@ -11,16 +11,17 @@
         :root {
             --bg: #020408;
             --surface: #0a101f;
-            --accent: #007bff; /* Ta couleur bleue */
+            --accent: #007bff;
             --text-main: #ffffff;
             --text-dim: #8892b0;
             --nav-height: 90px;
             
             /* Couleurs Plateformes */
             --spotify: #1DB954;
-            --deezer: #EF5466;
+            --deezer: #a233ff;
             --soundcloud: #FF5500;
             --youtube: #FF0000;
+            --instagram: #833ab4;
         }
 
         * { box-sizing: border-box; }
@@ -34,24 +35,25 @@
             color: var(--text-main);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-
-            /* --- AJOUT DU POINTEUR DE SOURIS PERSONNALISÉ --- */
-            /* Nous définissons un pointeur personnalisé avec un point central et un cercle extérieur */
-            /* La couleur est fixée par --accent (#007bff) */
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="%23007bff"/><circle cx="12" cy="12" r="7" stroke="%23007bff" stroke-width="1.5" fill="none"/></svg>') 12 12, auto;
+            /* Curseur Cercle Épuré */
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23007bff" stroke-width="1.5" stroke-opacity="0.8"><circle cx="12" cy="12" r="8"/></svg>') 12 12, auto;
         }
 
-        /* S'assurer que le curseur change sur les éléments interactifs */
-        a, button, .album-img-container {
-            cursor: pointer;
+        /* --- TRAÎNÉE BLEUE --- */
+        .trail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            will-change: transform;
         }
 
-        /* S'assurer que le pointeur personnalisé est maintenu pour le texte cliquable */
-        a:hover, a:focus, a:active {
-            color: var(--accent);
-        }
-
-        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
@@ -66,138 +68,80 @@
             border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
-        .brand { display: flex; flex-direction: column; }
-        .logo { font-weight: 700; letter-spacing: 6px; text-transform: uppercase; font-size: 1.1rem; line-height: 1; }
-        
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
+        .logo { font-weight: 700; letter-spacing: 6px; text-transform: uppercase; font-size: 1.1rem; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 30px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        section {
-            padding: 100px 8% 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-            scroll-margin-top: var(--nav-height);
-        }
+        section { padding: 100px 8% 60px; max-width: 1200px; margin: 0 auto; scroll-margin-top: var(--nav-height); }
+        h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 5px; color: var(--accent); margin-bottom: 60px; text-align: center; }
 
-        h2 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: var(--accent);
-            margin-bottom: 60px;
-            text-align: center;
-        }
-
-        /* Discographie */
-        .disco-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-        }
-
-        .album {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .album-img-container {
-            position: relative;
-            aspect-ratio: 1/1;
-            overflow: hidden;
-            border-radius: 2px;
-            background: #000;
-            border: 1px solid transparent; 
-            transition: 0.3s ease;
-        }
-
-        .album img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.85);
-            transition: 0.3s ease;
-        }
-
+        /* Discographie - RESTAURATION DES STYLES DE POLICE */
+        .disco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; }
+        .album { text-decoration: none; color: inherit; display: block; transition: transform 0.3s ease; }
+        
+        .album-img-container { aspect-ratio: 1/1; overflow: hidden; border-radius: 2px; background: #000; border: 1px solid transparent; transition: 0.3s ease; }
+        .album img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.85); transition: 0.3s ease; }
+        
         .album:hover { transform: translateY(-5px); }
         .album:hover .album-img-container { border-color: var(--accent); }
         .album:hover img { filter: brightness(1.1); }
-        
-        .album-title { margin-top: 20px; font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
-        .album-year { color: var(--text-dim); font-size: 0.8rem; }
 
-        /* Live */
-        .live-list { border-top: 1px solid rgba(255,255,255,0.05); }
-        .live-row {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            padding: 30px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            align-items: center;
+        /* Styles de texte restaurés ici */
+        .album-title { 
+            margin-top: 20px; 
+            font-weight: 700; 
+            font-size: 0.9rem; 
+            letter-spacing: 1px; 
+            text-transform: none; /* Garde la casse d'origine */
         }
-        .live-date { font-weight: 400; color: var(--text-main); font-size: 0.9rem; }
+        .album-year { 
+            color: var(--text-dim); 
+            font-size: 0.8rem; 
+            font-weight: 300;
+        }
+
+        .live-list { border-top: 1px solid rgba(255,255,255,0.05); }
+        .live-row { display: grid; grid-template-columns: 1fr 2fr; padding: 30px 0; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: center; }
+        .live-date { font-weight: 400; font-size: 0.9rem; }
         .live-venue { color: var(--text-dim); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
 
-        /* Listen - Mise à jour avec couleurs */
-        .links-flex {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+        /* Listen */
+        .links-flex { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .stream-item {
             padding: 12px 30px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid;
             text-decoration: none;
-            color: var(--text-main);
             font-size: 0.7rem;
             letter-spacing: 2px;
             transition: 0.4s;
             background: transparent;
         }
 
-        /* Hover states par plateforme */
-        .s-spotify:hover { border-color: var(--spotify); color: var(--spotify); background: rgba(29, 185, 84, 0.05); }
-        .s-deezer:hover { border-color: var(--deezer); color: var(--deezer); background: rgba(239, 84, 102, 0.05); }
-        .s-soundcloud:hover { border-color: var(--soundcloud); color: var(--soundcloud); background: rgba(255, 85, 0, 0.05); }
-        .s-youtube:hover { border-color: var(--youtube); color: var(--youtube); background: rgba(255, 0, 0, 0.05); }
+        .s-spotify { border-color: var(--spotify); color: var(--spotify); }
+        .s-spotify:hover { background: var(--spotify); color: #000; }
+        .s-deezer { border-color: var(--deezer); color: var(--deezer); }
+        .s-deezer:hover { background: var(--deezer); color: #fff; }
+        .s-soundcloud { border-color: var(--soundcloud); color: var(--soundcloud); }
+        .s-soundcloud:hover { background: var(--soundcloud); color: #fff; }
+        .s-youtube { border-color: var(--youtube); color: var(--youtube); }
+        .s-youtube:hover { background: var(--youtube); color: #fff; }
+        .s-instagram { border-color: var(--instagram); color: var(--instagram); }
+        .s-instagram:hover { background: var(--instagram); color: #fff; }
 
-        footer {
-            padding: 100px 0 50px;
-            text-align: center;
-            font-size: 0.6rem;
-            color: var(--text-dim);
-            letter-spacing: 3px;
-            opacity: 0.6;
-        }
-
+        footer { padding: 100px 0 50px; text-align: center; font-size: 0.6rem; color: var(--text-dim); letter-spacing: 3px; opacity: 0.6; }
         .footer-location { margin-bottom: 15px; color: var(--text-main); font-weight: 400; letter-spacing: 2px; }
 
         @media (max-width: 768px) {
             nav { padding: 20px 5%; flex-direction: column; height: auto; gap: 15px; }
             .nav-links a { margin: 0 10px; }
             .live-row { grid-template-columns: 1fr; gap: 10px; text-align: center; }
-            section { padding: 60px 8%; }
         }
     </style>
 </head>
-
 <body>
 
     <nav>
-        <div class="brand">
-            <div class="logo">Lazy B</div>
-        </div>
+        <div class="logo">Lazy B</div>
         <div class="nav-links">
             <a href="#discography">Discography</a>
             <a href="#live">Live</a>
@@ -208,22 +152,22 @@
     <section id="discography">
         <h2>Discography</h2>
         <div class="disco-grid">
-            <a href="#" target="_blank" class="album">
+            <a href="https://open.spotify.com/intl-fr/album/4HlgY6Rybpod18drwrQvtD?si=E8xbzEvIRTm1bblFnvNLnw" target="_blank" class="album">
                 <div class="album-img-container"><img src="decibelle.jpg" alt="Decibelle"></div>
-                <div class="album-title">Decibelle</div>
+                <div class="album-title">Décibelle</div>
                 <div class="album-year">2026 • Single</div>
             </a>
-            <a href="#" target="_blank" class="album">
+            <a href="https://open.spotify.com/intl-fr/album/4YMeBu1aVtDE7yuLLpsAkq?si=HqoKdqfiQ_KSs0ck36AZJQ" target="_blank" class="album">
                 <div class="album-img-container"><img src="Take two ep.jpg" alt="Take Two"></div>
                 <div class="album-title">Take Two</div>
                 <div class="album-year">2026 • EP</div>
             </a>
-            <a href="#" target="_blank" class="album">
+            <a href="https://open.spotify.com/intl-fr/album/190oeN8mWVgGKCdZgcoXEw?si=JV61KiOfQmy4CuVrs5bh7A" target="_blank" class="album">
                 <div class="album-img-container"><img src="take one.webp" alt="Take One"></div>
                 <div class="album-title">Take One</div>
                 <div class="album-year">2025 • Single</div>
             </a>
-            <a href="#" target="_blank" class="album">
+            <a href="https://open.spotify.com/intl-fr/track/4Q7PaGoDVswDfcvh4rqzOS?si=517c9aefb8f74822" target="_blank" class="album">
                 <div class="album-img-container"><img src="blue smoothies.webp" alt="Blue - The smoothies"></div>
                 <div class="album-title">Blue - The Smoothies</div>
                 <div class="album-year">2025 • Single</div>
@@ -239,11 +183,11 @@
                 <span class="live-venue">Soupe Machine I - Festival</span>
             </div>
             <div class="live-row">
-                <span class="live-date">APR 12</span>
+                <span class="live-date">11 / 07 / 2023</span>
                 <span class="live-venue">Beon III - Festival</span>
             </div>
             <div class="live-row">
-                <span class="live-date">MAY 05</span>
+                <span class="live-date">22 / 05 / 2023</span>
                 <span class="live-venue">Scudimanche IV - Festival</span>
             </div>
             <div class="live-row">
@@ -256,10 +200,11 @@
     <section id="links">
         <h2>Listen</h2>
         <div class="links-flex">
-            <a href="#" class="stream-item s-spotify" target="_blank">SPOTIFY</a>
+            <a href="https://open.spotify.com/intl-fr/artist/2Ed8kpWZqEoSyl9PW2hjqM?si=4geO3aS0SaapohPCElYV5w" class="stream-item s-spotify" target="_blank">SPOTIFY</a>
             <a href="https://link.deezer.com/s/32R9bXDEYWdf4ohRqEl0N" class="stream-item s-deezer" target="_blank">DEEZER</a>
             <a href="https://soundcloud.com/user-762746710" class="stream-item s-soundcloud" target="_blank">SOUNDCLOUD</a>
-            <a href="#" class="stream-item s-youtube" target="_blank">YOUTUBE MUSIC</a>
+            <a href="https://www.youtube.com/watch?v=nMaAmDUFRtQ&list=OLAK5uy_nv73Qsmvu1qjyDCa-s4bD7YbZyNjuEB90" class="stream-item s-youtube" target="_blank">YOUTUBE MUSIC</a>
+            <a href="https://www.instagram.com/lazy_b.music?igsh=MTB5aTRtM3E1ZzhqbA%3D%3D&utm_source=qr" class="stream-item s-instagram" target="_blank">INSTAGRAM</a>
         </div>
     </section>
 
@@ -268,5 +213,36 @@
         © 2026 Lazy B — ALL RIGHTS RESERVED
     </footer>
 
+    <script>
+        const dots = [];
+        const cursor = { x: 0, y: 0 };
+        for (let i = 0; i < 15; i++) {
+            const node = document.createElement("div");
+            node.className = "trail";
+            const size = (15 - i) * 0.6;
+            node.style.width = size + "px";
+            node.style.height = size + "px";
+            node.style.opacity = (15 - i) / 25; 
+            document.body.appendChild(node);
+            dots.push(node);
+        }
+        window.addEventListener("mousemove", (e) => {
+            cursor.x = e.clientX;
+            cursor.y = e.clientY;
+        });
+        function draw() {
+            let x = cursor.x;
+            let y = cursor.y;
+            dots.forEach((dot, index) => {
+                const nextDot = dots[index + 1] || dots[0];
+                dot.style.left = x + "px";
+                dot.style.top = y + "px";
+                x += (nextDot.offsetLeft - x) * 0.35;
+                y += (nextDot.offsetTop - y) * 0.35;
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
 </body>
 </html>
